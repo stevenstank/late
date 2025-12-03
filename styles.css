@@ -34,27 +34,65 @@ body {
     transition: background-color 300ms ease, color 300ms ease;
 }
 
-.h1 { font-size: 3.5rem; font-weight: 800; }
-.h2 { font-size: 2.5rem; font-weight: 300; font-style: italic; }
-.h3 { font-size: 2.5rem; font-weight: 700; }
-.h4 { font-size: 1.5rem; font-weight: 600; }
-.light { font-weight: 300; }
-.bold { font-weight: 700; }
+.h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+}
+
+.h2 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.light {
+    font-weight: 300;
+}
+
+.bold {
+    font-weight: 700;
+}
 
 @media (min-width: 640px) {
-    .h1 { font-size: 4.5rem; }
-    .h2 { font-size: 3.5rem; }
-    .h3 { font-size: 3.5rem; }
-    .h4 { font-size: 1.75rem; }
+    .h1 {
+        font-size: 4.5rem;
+    }
+
+    .h2 {
+        font-size: 3.5rem;
+    }
+
+    .h3 {
+        font-size: 3.5rem;
+    }
+
+    .h4 {
+        font-size: 1.75rem;
+    }
 }
 
 @media (min-width: 1024px) {
-    .h1 { font-size: 5.5rem; }
-    .h2 { font-size: 4rem; }
+    .h1 {
+        font-size: 5.5rem;
+    }
+
+    .h2 {
+        font-size: 4rem;
+    }
 }
 
 .hero {
-    background-image: url('https://images.unsplash.com/photo-1549491730-802c6361a9fc?q=80&w=2000&auto=format&fit=crop'); 
+    background-image: url('https://images.unsplash.com/photo-1549491730-802c6361a9fc?q=80&w=2000&auto=format&fit=crop');
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -62,7 +100,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center; /* Explicitly center content within the hero section */
+    text-align: center;
     overflow: hidden;
 }
 
@@ -146,7 +184,7 @@ body {
 
 .l.left {
     left: 0;
-    padding-right: 20px; 
+    padding-right: 20px;
     text-align: right;
 }
 
@@ -177,7 +215,7 @@ body {
 }
 
 .n {
-    background-color: rgba(5, 150, 105, 0.06); 
+    background-color: rgba(5, 150, 105, 0.06);
     border: 1px solid var(--accent);
     padding: 20px;
     border-radius: 10px;
@@ -185,9 +223,11 @@ body {
     color: var(--text);
 }
 
-.sub, .desc, .foot {
+.sub,
+.desc,
+.foot {
     color: var(--muted);
-    font-size: 1.125rem; 
+    font-size: 1.125rem;
 }
 
 .centered-text {
@@ -245,7 +285,7 @@ body {
     color: #6b7280;
 }
 
-.countdown-s { 
+.countdown-s {
     background: linear-gradient(180deg, rgba(5, 150, 105, 0.1), transparent), var(--bg);
     padding: 100px 0;
     transition: background 300ms ease;
@@ -372,13 +412,14 @@ body {
         text-align: left;
     }
 
-    .l.left, .l.right {
+    .l.left,
+    .l.right {
         left: 0;
         padding-left: 20px;
         padding-right: 20px;
         text-align: left;
     }
-    
+
     .t {
         right: 18px;
         top: 18px;
@@ -388,7 +429,7 @@ body {
         width: 6.5rem;
         padding: 1.25rem 1rem;
     }
-    
+
     .time-num {
         font-size: 2.5rem;
     }

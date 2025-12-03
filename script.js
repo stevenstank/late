@@ -40,7 +40,7 @@ toggle.addEventListener('click', () => {
 function getNextBirthday(m, d, h, min) {
     const now = new Date();
     let y = now.getFullYear();
-    let targetDate = new Date(y, m - 1, d, h, min, 0); 
+    let targetDate = new Date(y, m - 1, d, h, min, 0);
 
     if (targetDate.getTime() < now.getTime()) {
         targetDate = new Date(y + 1, m - 1, d, h, min, 0);
@@ -48,7 +48,7 @@ function getNextBirthday(m, d, h, min) {
     return targetDate.getTime();
 }
 
-const countdownDate = getNextBirthday(8, 20, 16, 18); 
+const countdownDate = getNextBirthday(8, 20, 16, 18);
 const countdownSection = document.getElementById("s-4");
 
 const countdownInterval = setInterval(function () {
