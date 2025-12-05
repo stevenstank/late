@@ -62,7 +62,6 @@ if ('IntersectionObserver' in window) {
     const getVal = () => { const v = parseInt(localStorage.getItem(KEY), 10); return Number.isFinite(v) ? v : 0 };
     let count = getVal();
     let hold = null;
-    let lastPointer = 0;
 
     function render() {
         el.textContent = String(count);
@@ -70,32 +69,39 @@ if ('IntersectionObserver' in window) {
         if (logo) logo.style.opacity = count > 0 ? '1' : '0.6';
     }
     function save() { localStorage.setItem(KEY, String(count)) }
+
     function incFn() { count++; save(); flash(); render() }
     function decFn() { count = Math.max(0, count - 1); save(); flash(); render() }
     function flash() { if (!logo) return; logo.style.transform = 'scale(1.12) rotate(-6deg)'; setTimeout(() => logo.style.transform = '', 180) }
 
-    function startHold(fn) { fn(); hold = setTimeout(() => { hold = setInterval(fn, 120) }, 360) }
-    function stopHold() { clearTimeout(hold); clearInterval(hold); hold = null }
+    function startHold(fn) {
+        fn();
+        hold = setTimeout(() => {
+            hold = setInterval(fn, 120)
+        }, 360)
+    }
+    function stopHold() {
+        clearTimeout(hold);
+        clearInterval(hold);
+        hold = null;
+    }
 
     render();
 
-    inc.addEventListener('click', e => { if (Date.now() - lastPointer < 350) return; incFn() });
-    dec.addEventListener('click', e => { if (Date.now() - lastPointer < 350) return; decFn() });
+    inc.addEventListener('pointerdown', e => { e.preventDefault(); startHold(incFn) });
+    inc.addEventListener('pointerup', stopHold);
+    inc.addEventListener('pointercancel', stopHold);
+    inc.addEventListener('pointerleave', stopHold);
+
+    dec.addEventListener('pointerdown', e => { e.preventDefault(); startHold(decFn) });
+    dec.addEventListener('pointerup', stopHold);
+    dec.addEventListener('pointercancel', stopHold);
+    dec.addEventListener('pointerleave', stopHold);
 
     wrap.addEventListener('keydown', e => {
         if (e.key === 'ArrowUp' || e.key === '+' || e.key === '=') { e.preventDefault(); incFn() }
         if (e.key === 'ArrowDown' || e.key === '-') { e.preventDefault(); decFn() }
     });
-
-    inc.addEventListener('pointerdown', e => { e.preventDefault(); lastPointer = Date.now(); startHold(incFn) });
-    inc.addEventListener('pointerup', stopHold);
-    inc.addEventListener('pointercancel', stopHold);
-    inc.addEventListener('pointerleave', stopHold);
-
-    dec.addEventListener('pointerdown', e => { e.preventDefault(); lastPointer = Date.now(); startHold(decFn) });
-    dec.addEventListener('pointerup', stopHold);
-    dec.addEventListener('pointercancel', stopHold);
-    dec.addEventListener('pointerleave', stopHold);
 
     window.addEventListener('storage', e => {
         if (e.key === KEY) {
