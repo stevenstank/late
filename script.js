@@ -11,54 +11,44 @@ toggle.addEventListener('click', () => { const current = root.getAttribute('data
 function getNextBirthday(m, d, h, min) {
     const now = new Date();
     let y = now.getFullYear();
-    let targetDate = new Date(y, m - 1, d, h, min, 0);
-    if (targetDate.getTime() < now.getTime()) {
-        targetDate = new Date(y + 1, m - 1, d, h, min, 0);
-    }
-    return targetDate.getTime();
+    let t = new Date(y, m - 1, d, h, min, 0);
+    if (t.getTime() < now.getTime()) t = new Date(y + 1, m - 1, d, h, min, 0);
+    return t.getTime();
 }
+
 const countdownDate = getNextBirthday(8, 20, 16, 18);
 const countdownSection = document.getElementById("s-4");
-const countdownInterval = setInterval(function () {
+
+setInterval(() => {
     const now = new Date().getTime();
-    const distance = countdownDate - now;
-    const d = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const s = Math.floor((distance % (1000 * 60)) / 1000);
-    const pad = (num) => Math.abs(num).toString().padStart(2, '0');
-    const daysEl = document.getElementById("days");
-    const hoursEl = document.getElementById("hours");
-    const minutesEl = document.getElementById("minutes");
-    const secondsEl = document.getElementById("seconds");
-    if (daysEl && hoursEl && minutesEl && secondsEl) {
-        daysEl.innerHTML = pad(d);
-        hoursEl.innerHTML = pad(h);
-        minutesEl.innerHTML = pad(m);
-        secondsEl.innerHTML = pad(s);
-    }
-    if (distance < 0) {
-        clearInterval(countdownInterval);
-        if (countdownSection) {
-            countdownSection.innerHTML = '<div class="max-w-4xl mx-auto text-center"><h2 class="text-4xl font-extrabold" style="color: var(--accent);">🎉 Happy Birthday, Riddhi! 🎉</h2><p class="text-xl mt-4">The next celebration is officially here!</p></div>';
-        }
+    const dist = countdownDate - now;
+    const d = Math.floor(dist / (1000 * 60 * 60 * 24));
+    const h = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((dist % (1000 * 60)) / 1000);
+    const pad = n => Math.abs(n).toString().padStart(2, '0');
+    const dy = document.getElementById("days");
+    const hr = document.getElementById("hours");
+    const mn = document.getElementById("minutes");
+    const sc = document.getElementById("seconds");
+    if (dy) { dy.innerHTML = pad(d); hr.innerHTML = pad(h); mn.innerHTML = pad(m); sc.innerHTML = pad(s); }
+    if (dist < 0) {
+        countdownSection.innerHTML = '<div class="max-w-4xl mx-auto text-center"><h2 class="text-4xl font-extrabold" style="color: var(--accent);">🎉 Happy Birthday, Riddhi! 🎉</h2><p class="text-xl mt-4">The next celebration is officially here!</p></div>';
     }
 }, 1000);
 
-const timelineItems = document.querySelectorAll('.l');
+const items = document.querySelectorAll('.l');
 if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const delay = Array.from(timelineItems).indexOf(entry.target) * 100;
-                setTimeout(() => { entry.target.classList.add('visible'); observer.unobserve(entry.target) }, delay);
+    const obs = new IntersectionObserver(e => {
+        e.forEach(x => {
+            if (x.isIntersecting) {
+                const delay = Array.from(items).indexOf(x.target) * 100;
+                setTimeout(() => { x.target.classList.add('visible'); obs.unobserve(x.target) }, delay);
             }
         });
     }, { threshold: 0.1 });
-    timelineItems.forEach(item => { observer.observe(item) });
-} else {
-    timelineItems.forEach(item => { item.classList.add('visible') });
-}
+    items.forEach(i => obs.observe(i));
+} else items.forEach(i => i.classList.add('visible'));
 
 (function () {
     const KEY = 'leaf-count';
@@ -67,30 +57,50 @@ if ('IntersectionObserver' in window) {
     const el = document.getElementById('leafCount');
     const wrap = document.getElementById('leafCounter');
     const logo = document.getElementById('leafLogo');
-    if (!inc || !dec || !el || !wrap) return;
+    if (!inc || !dec || !el) return;
+
     const getVal = () => { const v = parseInt(localStorage.getItem(KEY), 10); return Number.isFinite(v) ? v : 0 };
     let count = getVal();
-    function render() { el.textContent = String(count); el.parentElement.setAttribute('title', `${count} leaves`); if (logo) logo.style.opacity = count > 0 ? '1' : '0.6' }
-    function save() { localStorage.setItem(KEY, String(count)) }
-    function incFn() { count = count + 1; save(); flash(); render() }
-    function decFn() { count = Math.max(0, count - 1); save(); flash(); render() }
-    function flash() { if (!logo) return; logo.style.transform = 'scale(1.12) rotate(-6deg)'; setTimeout(() => { logo.style.transform = '' }, 180) }
-    render();
-    inc.addEventListener('click', incFn);
-    dec.addEventListener('click', decFn);
-    wrap.addEventListener('keydown', e => { if (e.key === 'ArrowUp' || e.key === '+' || e.key === '=') { e.preventDefault(); incFn() } if (e.key === 'ArrowDown' || e.key === '-') { e.preventDefault(); decFn() } });
     let hold = null;
+    let lastPointer = 0;
+
+    function render() {
+        el.textContent = String(count);
+        el.parentElement.setAttribute('title', count + ' leaves');
+        if (logo) logo.style.opacity = count > 0 ? '1' : '0.6';
+    }
+    function save() { localStorage.setItem(KEY, String(count)) }
+    function incFn() { count++; save(); flash(); render() }
+    function decFn() { count = Math.max(0, count - 1); save(); flash(); render() }
+    function flash() { if (!logo) return; logo.style.transform = 'scale(1.12) rotate(-6deg)'; setTimeout(() => logo.style.transform = '', 180) }
+
     function startHold(fn) { fn(); hold = setTimeout(() => { hold = setInterval(fn, 120) }, 360) }
-    function stopHold() { if (!hold) return; clearTimeout(hold); clearInterval(hold); hold = null }
-    inc.addEventListener('mousedown', () => startHold(incFn));
-    inc.addEventListener('touchstart', () => startHold(incFn), { passive: true });
-    inc.addEventListener('mouseup', stopHold);
-    inc.addEventListener('mouseleave', stopHold);
-    inc.addEventListener('touchend', stopHold);
-    dec.addEventListener('mousedown', () => startHold(decFn));
-    dec.addEventListener('touchstart', () => startHold(decFn), { passive: true });
-    dec.addEventListener('mouseup', stopHold);
-    dec.addEventListener('mouseleave', stopHold);
-    dec.addEventListener('touchend', stopHold);
-    window.addEventListener('storage', e => { if (e.key === KEY) { const nv = getVal(); if (nv !== count) { count = nv; render() } } });
+    function stopHold() { clearTimeout(hold); clearInterval(hold); hold = null }
+
+    render();
+
+    inc.addEventListener('click', e => { if (Date.now() - lastPointer < 350) return; incFn() });
+    dec.addEventListener('click', e => { if (Date.now() - lastPointer < 350) return; decFn() });
+
+    wrap.addEventListener('keydown', e => {
+        if (e.key === 'ArrowUp' || e.key === '+' || e.key === '=') { e.preventDefault(); incFn() }
+        if (e.key === 'ArrowDown' || e.key === '-') { e.preventDefault(); decFn() }
+    });
+
+    inc.addEventListener('pointerdown', e => { e.preventDefault(); lastPointer = Date.now(); startHold(incFn) });
+    inc.addEventListener('pointerup', stopHold);
+    inc.addEventListener('pointercancel', stopHold);
+    inc.addEventListener('pointerleave', stopHold);
+
+    dec.addEventListener('pointerdown', e => { e.preventDefault(); lastPointer = Date.now(); startHold(decFn) });
+    dec.addEventListener('pointerup', stopHold);
+    dec.addEventListener('pointercancel', stopHold);
+    dec.addEventListener('pointerleave', stopHold);
+
+    window.addEventListener('storage', e => {
+        if (e.key === KEY) {
+            const v = getVal();
+            if (v !== count) { count = v; render() }
+        }
+    });
 })();
