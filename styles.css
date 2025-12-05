@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
 :root {
     --bg: #f3f4f6;
     --panel: #ffffff;
@@ -5,8 +7,7 @@
     --text: #111827;
     --accent: #059669;
     --hero-overlay: rgba(0, 0, 0, 0.4);
-    --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-        0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 [data-theme="dark"] {
@@ -23,7 +24,7 @@ html,
 body {
     height: 100%;
     margin: 0;
-    padding: 0;
+    padding: 0
 }
 
 body {
@@ -36,58 +37,58 @@ body {
 
 .h1 {
     font-size: 3.5rem;
-    font-weight: 800;
+    font-weight: 800
 }
 
 .h2 {
     font-size: 2.5rem;
     font-weight: 300;
-    font-style: italic;
+    font-style: italic
 }
 
 .h3 {
     font-size: 2.5rem;
-    font-weight: 700;
+    font-weight: 700
 }
 
 .h4 {
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 600
 }
 
 .light {
-    font-weight: 300;
+    font-weight: 300
 }
 
 .bold {
-    font-weight: 700;
+    font-weight: 700
 }
 
-@media (min-width: 640px) {
+@media (min-width:640px) {
     .h1 {
-        font-size: 4.5rem;
+        font-size: 4.5rem
     }
 
     .h2 {
-        font-size: 3.5rem;
+        font-size: 3.5rem
     }
 
     .h3 {
-        font-size: 3.5rem;
+        font-size: 3.5rem
     }
 
     .h4 {
-        font-size: 1.75rem;
+        font-size: 1.75rem
     }
 }
 
-@media (min-width: 1024px) {
+@media (min-width:1024px) {
     .h1 {
-        font-size: 5.5rem;
+        font-size: 5.5rem
     }
 
     .h2 {
-        font-size: 4rem;
+        font-size: 4rem
     }
 }
 
@@ -114,14 +115,14 @@ body {
 
 .hero-inner {
     padding: 0 1rem;
-    z-index: 10;
+    z-index: 10
 }
 
 .h {
     color: white;
     text-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
     margin-bottom: 1.25rem;
-    letter-spacing: -0.05em;
+    letter-spacing: -0.05em
 }
 
 .hero-p {
@@ -130,7 +131,7 @@ body {
     max-width: 55rem;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 3rem;
+    margin-bottom: 3rem
 }
 
 .cta {
@@ -143,28 +144,28 @@ body {
     border-radius: 9999px;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
     transition: background-color 300ms;
-    text-decoration: none;
+    text-decoration: none
 }
 
 .cta:hover {
-    background-color: #34d399;
+    background-color: #34d399
 }
 
 .s {
     padding: 100px 0;
     position: relative;
     background-color: var(--panel);
-    transition: background-color 300ms ease;
+    transition: background-color 300ms ease
 }
 
 .s-pad {
-    padding: 5rem 1.5rem;
+    padding: 5rem 1.5rem
 }
 
 .timeline-wrap {
     max-width: 55rem;
     margin: 0 auto;
-    position: relative;
+    position: relative
 }
 
 .l {
@@ -174,24 +175,24 @@ body {
     box-sizing: border-box;
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out
 }
 
 .l.visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0)
 }
 
 .l.left {
     left: 0;
     padding-right: 20px;
-    text-align: right;
+    text-align: right
 }
 
 .l.right {
     left: 50%;
     padding-left: 20px;
-    text-align: left;
+    text-align: left
 }
 
 .c {
@@ -201,17 +202,13 @@ body {
     box-shadow: var(--card-shadow);
     transform: rotate(0deg);
     border-radius: 12px;
-    overflow: hidden;
+    overflow: hidden
 }
 
 .c img {
     width: 100%;
     border-radius: 8px;
-    display: block;
-}
-
-.l:nth-child(even) .c {
-    transform: rotate(0deg);
+    display: block
 }
 
 .n {
@@ -220,43 +217,43 @@ body {
     padding: 20px;
     border-radius: 10px;
     margin-top: 15px;
-    color: var(--text);
+    color: var(--text)
 }
 
 .sub,
 .desc,
 .foot {
     color: var(--muted);
-    font-size: 1.125rem;
+    font-size: 1.125rem
 }
 
 .centered-text {
-    text-align: center;
+    text-align: center
 }
 
 #s-3 {
     background-color: var(--panel);
     transition: background 300ms ease, color 300ms ease;
-    padding-top: 100px;
+    padding-top: 100px
 }
 
 .incident-p {
     font-size: 1.5rem;
-    font-weight: 500;
+    font-weight: 500
 }
 
 .reason-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
-    margin-top: 3rem;
+    margin-top: 3rem
 }
 
-@media (min-width: 768px) {
+@media (min-width:768px) {
     .reason-grid {
         grid-template-columns: repeat(3, 1fr);
         max-width: 60rem;
-        margin: 3rem auto;
+        margin: 3rem auto
     }
 }
 
@@ -268,45 +265,45 @@ body {
     box-shadow: var(--card-shadow);
     transition: transform 300ms ease;
     height: 100%;
-    text-align: center;
+    text-align: center
 }
 
 .r:hover {
-    transform: translateY(-8px);
+    transform: translateY(-8px)
 }
 
 .r-icon {
     font-size: 4rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1rem
 }
 
 .r-p {
     font-size: 1rem;
-    color: #6b7280;
+    color: #6b7280
 }
 
 .countdown-s {
     background: linear-gradient(180deg, rgba(5, 150, 105, 0.1), transparent), var(--bg);
     padding: 100px 0;
-    transition: background 300ms ease;
+    transition: background 300ms ease
 }
 
 .w {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 2rem
 }
 
-@media (min-width: 640px) {
+@media (min-width:640px) {
     .w {
-        gap: 3rem;
+        gap: 3rem
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width:768px) {
     .w {
-        gap: 4rem;
+        gap: 4rem
     }
 }
 
@@ -317,24 +314,24 @@ body {
     border-radius: 1rem;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     width: 8rem;
-    text-align: center;
+    text-align: center
 }
 
-@media (min-width: 640px) {
+@media (min-width:640px) {
     .time-block {
-        width: 10rem;
+        width: 10rem
     }
 }
 
 .time-num {
     font-size: 2.75rem;
     font-weight: 800;
-    display: block;
+    display: block
 }
 
-@media (min-width: 640px) {
+@media (min-width:640px) {
     .time-num {
-        font-size: 3.75rem;
+        font-size: 3.75rem
     }
 }
 
@@ -343,7 +340,7 @@ body {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-top: 0.35rem;
+    margin-top: 0.35rem
 }
 
 .t {
@@ -361,17 +358,17 @@ body {
     backdrop-filter: blur(6px) saturate(120%);
     border: 1px solid rgba(255, 255, 255, 0.6);
     cursor: pointer;
-    border: none;
+    border: none
 }
 
 [data-theme="dark"] .t {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
     border: 1px solid rgba(255, 255, 255, 0.06);
-    box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6);
+    box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6)
 }
 
 .t:active {
-    transform: scale(.98);
+    transform: scale(.98)
 }
 
 .t .dot {
@@ -381,18 +378,18 @@ body {
     place-items: center;
     border-radius: 999px;
     background: linear-gradient(180deg, var(--panel), rgba(255, 255, 255, 0.02));
-    box-shadow: 0 6px 18px rgba(16, 24, 40, 0.08);
+    box-shadow: 0 6px 18px rgba(16, 24, 40, 0.08)
 }
 
 .label {
     display: none;
     font-size: 0.9rem;
-    font-weight: 500;
+    font-weight: 500
 }
 
-@media (min-width: 640px) {
+@media (min-width:640px) {
     .label {
-        display: inline;
+        display: inline
     }
 }
 
@@ -400,16 +397,16 @@ body {
     background-color: #1f2937;
     text-align: center;
     color: #9ca3af;
-    padding: 1.75rem 0;
+    padding: 1.75rem 0
 }
 
-@media (max-width: 768px) {
+@media (max-width:768px) {
     .l {
         width: 100%;
         left: 0;
         padding-left: 20px;
         padding-right: 20px;
-        text-align: left;
+        text-align: left
     }
 
     .l.left,
@@ -417,24 +414,131 @@ body {
         left: 0;
         padding-left: 20px;
         padding-right: 20px;
-        text-align: left;
+        text-align: left
     }
 
     .t {
         right: 18px;
-        top: 18px;
+        top: 18px
     }
 
     .time-block {
         width: 6.5rem;
-        padding: 1.25rem 1rem;
+        padding: 1.25rem 1rem
     }
 
     .time-num {
-        font-size: 2.5rem;
+        font-size: 2.5rem
     }
 
     .w {
-        gap: 1.5rem;
+        gap: 1.5rem
+    }
+}
+
+.leaf-counter {
+    position: fixed;
+    right: 22px;
+    top: 82px;
+    z-index: 80;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+    padding: 6px;
+    border-radius: 999px;
+    box-shadow: 0 8px 24px rgba(16, 24, 40, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    font-family: 'Inter', sans-serif;
+    user-select: none;
+    -webkit-user-select: none
+}
+
+[data-theme="dark"] .leaf-counter {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6)
+}
+
+.leaf-btn {
+    min-width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    border: none;
+    background: transparent;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: transform 120ms ease, background 120ms ease, color 120ms ease;
+    color: var(--text)
+}
+
+.leaf-btn:active {
+    transform: scale(0.96)
+}
+
+.leaf-btn:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 12px
+}
+
+.leaf-display {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.03);
+    font-weight: 700;
+    color: var(--text);
+    min-width: 72px;
+    justify-content: center
+}
+
+[data-theme="dark"] .leaf-display {
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--text)
+}
+
+.leaf-count {
+    font-size: 1rem;
+    min-width: 34px;
+    text-align: center;
+    display: inline-block
+}
+
+#leafLogo {
+    transform-origin: 50% 50%;
+    transition: transform 220ms cubic-bezier(.2, .9, .3, 1), filter 220ms;
+    display: block
+}
+
+.leaf-counter:focus {
+    box-shadow: 0 6px 20px rgba(16, 24, 40, 0.12)
+}
+
+@media (max-width:640px) {
+    .leaf-counter {
+        right: 14px;
+        top: 72px
+    }
+
+    .leaf-btn {
+        min-width: 32px;
+        height: 32px;
+        font-size: 16px
+    }
+
+    .leaf-count {
+        min-width: 28px;
+        font-size: 0.95rem
+    }
+
+    #leafLogo {
+        width: 22px;
+        height: 22px
     }
 }

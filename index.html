@@ -2,39 +2,52 @@
 <html lang="en" data-theme="light">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Happy Birthday Riddhiii</title>
-
-    <link rel="stylesheet" href="styles.css">
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-    </style>
+    <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
     <button id="themeToggle" class="t" aria-label="Toggle theme" title="Toggle theme">
         <span class="dot" id="themeIcon"></span>
-        <span id="themeLabel" class="label" style="color:var(--text);">Dark</span>
+        <span id="themeLabel" class="label" style="color:var(--text)">Dark</span>
     </button>
+
+    <div id="leafCounter" class="leaf-counter" tabindex="0" aria-label="Leaf counter" aria-live="polite">
+        <button id="leafDec" class="leaf-btn" aria-label="Decrease leaves" type="button">−</button>
+        <div class="leaf-display" role="group" aria-label="Leaf count">
+            <svg id="leafLogo" width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                focusable="false" aria-hidden="true">
+                <defs>
+                    <linearGradient id="leafG" x1="0" x2="1" y1="0" y2="1">
+                        <stop offset="0%" stop-color="#34d399" />
+                        <stop offset="60%" stop-color="#10b981" />
+                        <stop offset="100%" stop-color="#059669" />
+                    </linearGradient>
+                    <filter id="leafShadow" x="-50%" y="-50%" width="200%" height="200%">
+                        <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#064e3b" flood-opacity="0.12" />
+                    </filter>
+                </defs>
+                <path
+                    d="M12 2c3.9 3.9 6.1 7.8 7.1 11.6.6 2.2.9 4.5 1 6.5-3.5 0-7.4-1.8-11.6-5.9C6.1 14.2 4.4 10.3 4.4 6.8 4.3 8.8 4.7 11.1 5.2 13.3 8.6 9.9 11 7.6 12 5.6V2z"
+                    fill="url(#leafG)" filter="url(#leafShadow)" />
+                <path
+                    d="M7.8 16.2c.8.4 1.7.6 2.7.6 1.6 0 3.3-.6 5.2-1.8 1.8-1.1 3.8-2.9 5.9-5h.1c-3.9 0-7.8 1.8-11.6 5.6-3.8 3.8-5.6 7.7-5.6 11.6-2.1-2.1-3.9-4.1-5-5.9-1.1-1.9-1.8-3.6-1.8-5.2 0-1 .2-1.9.6-2.7 1.4-.8 3.8-1.9 7.5-3.3z"
+                    opacity="0.06" fill="#000" />
+            </svg>
+            <span id="leafCount" class="leaf-count">0</span>
+        </div>
+        <button id="leafInc" class="leaf-btn" aria-label="Increase leaves" type="button">+</button>
+    </div>
 
     <section id="s-1" class="z-0 hero">
         <div class="z-10 hero-inner text-center">
-            <h1 class="h h1">
-                A Belated Birthday Surprise!
-            </h1>
-            <h2 class="h h2">
-                Happy (August 20th) Birthday, Riddhi! 💚
-            </h2>
-            <p class="hero-p">
-                It's never too late to celebrate the best friend in the world. This is your very own corner of the
-                internet.
-            </p>
-
-            <a href="#s-2" class="cta">
-                Start the Celebration ↓
-            </a>
+            <h1 class="h h1">A Belated Birthday Surprise!</h1>
+            <h2 class="h h2">Happy (August 20th) Birthday, Riddhi! 💚</h2>
+            <p class="hero-p">It's never too late to celebrate the best friend in the world. This is your very own
+                corner of the internet.</p>
+            <a href="#s-2" class="cta">Start the Celebration ↓</a>
         </div>
     </section>
 
@@ -43,135 +56,92 @@
             <h2 class="h3 title centered-text">📸 Riddhi's Friendship Timeline</h2>
             <p class="sub centered-text">Our story, chapter by chapter.</p>
         </div>
-
         <div class="timeline-wrap">
             <div class="l left">
-                <div class="c">
-                    <img src="images/baarish.jpeg">
-                </div>
+                <div class="c"><img src="images/baarish.jpeg" alt="baarish"></div>
                 <div class="n">
                     <h3 class="h4 year">First Meetup</h3>
-                    <p class="desc mt-2">Crazy to think that our first meetup, we danced in the rain
-                        and in that moment, we instantly clicked</p>
+                    <p class="desc mt-2">Crazy to think that our first meetup, we danced in the rain and in that moment,
+                        we instantly clicked</p>
                 </div>
             </div>
-
             <div class="l right">
-                <div class="c">
-                    <img src="images/bday.jpeg">
-                </div>
+                <div class="c"><img src="images/bday.jpeg" alt="bday"></div>
                 <div class="n">
                     <h3 class="h4 year">The Birthdayyyy</h3>
-                    <p class="desc mt-2">Your birthday was pretty good, the gift was also good but you deserve better
-                        so here's an upgraded version
-                    </p>
+                    <p class="desc mt-2">Your birthday was pretty good, the gift was also good but you deserve better so
+                        here's an upgraded version</p>
                 </div>
             </div>
-
             <div class="l left">
-                <div class="c">
-                    <img src="images/twin.jpeg">
-                </div>
+                <div class="c"><img src="images/twin.jpeg" alt="twin"></div>
                 <div class="n">
                     <h3 class="h4 year">Matching</h3>
                     <p class="desc mt-2">We accidentally twinned one day, so here's a photo, bhondu</p>
                 </div>
             </div>
-
             <div class="l right">
-                <div class="c">
-                    <img src="images/fav.jpeg">
-                </div>
+                <div class="c"><img src="images/fav.jpeg" alt="fav"></div>
                 <div class="n">
                     <h3 class="h4 year">Fav photo</h3>
-                    <p class="desc mt-2">Everyone has their favourite photo of their best friend
-                        here's mine</p>
+                    <p class="desc mt-2">Everyone has their favourite photo of their best friend here's mine</p>
                 </div>
             </div>
-
             <div class="l left">
-                <div class="c">
-                    <img src="images/autistic.jpeg">
-                </div>
+                <div class="c"><img src="images/autistic.jpeg" alt="autistic"></div>
                 <div class="n">
                     <h3 class="h4 year">Autistic</h3>
-                    <p class="desc mt-2">You're such a bhondu sometimes
-                        and that's exactly why you're my bestfriend
+                    <p class="desc mt-2">You're such a bhondu sometimes and that's exactly why you're my bestfriend
                         (merse zyada autistic ho tum)</p>
                 </div>
             </div>
-
             <div class="l right">
-                <div class="c">
-                    <img src="images/collage1.jpeg">
-                </div>
+                <div class="c"><img src="images/collage1.jpeg" alt="collage"></div>
                 <div class="n">
                     <h3 class="h4 year">Collllaaagggeeeee</h3>
                     <p class="desc mt-2">That one time I got so bored, I made a collage of all our photos</p>
                 </div>
             </div>
-
             <div class="l left">
-                <div class="c">
-                    <img src="images/allnighter.jpeg">
-                </div>
+                <div class="c"><img src="images/allnighter.jpeg" alt="allnighter"></div>
                 <div class="n">
                     <h3 class="h4 year">The Allnighter</h3>
-                    <p class="desc mt-2">Your first allnighter with me
-                        we weren't even together, but somehow kept sending each other photo updates the whole time.</p>
+                    <p class="desc mt-2">Your first allnighter with me we weren't even together, but somehow kept
+                        sending each other photo updates the whole time.</p>
                 </div>
             </div>
-
             <div class="l right">
-                <div class="c">
-                    <img src="images/hate.jpeg">
-                </div>
+                <div class="c"><img src="images/hate.jpeg" alt="hate"></div>
                 <div class="n">
                     <h3 class="h4 year">Bestfriends?</h3>
                     <p class="desc mt-2">I tolerate you through your ragebaiting, your bullying, and even your flirty
-                        jokes.
-                        see how much i suffer?</p>
+                        jokes. see how much i suffer?</p>
                 </div>
             </div>
-
             <div class="l left">
-                <div class="c">
-                    <img src="images/bhondu.jpeg">
-                </div>
+                <div class="c"><img src="images/bhondu.jpeg" alt="bhondu"></div>
                 <div class="n">
                     <h3 class="h4 year">Bhondu dogisss</h3>
-                    <p class="desc mt-2"> i guess we both are autistic bhondu dogis
-                    </p>
+                    <p class="desc mt-2"> i guess we both are autistic bhondu dogis</p>
                 </div>
             </div>
-
             <div class="l right">
-                <div class="c">
-                    <img src="images/drunk.jpeg">
-                </div>
+                <div class="c"><img src="images/drunk.jpeg" alt="drunk"></div>
                 <div class="n">
                     <h3 class="h4 year">The drunk call</h3>
                     <p class="desc mt-2">How could I ever forget that drunk call? Easily the funniest call I've ever had
-                        with you
-                        (i love you as a friendddd)
-                    </p>
+                        with you (i love you as a friendddd)</p>
                 </div>
             </div>
-
             <div class="l left">
-                <div class="c">
-                    <img src="images/ghar.jpeg" alt="Ghar">
-                </div>
+                <div class="c"><img src="images/ghar.jpeg" alt="Ghar"></div>
                 <div class="n">
                     <h3 class="h4 year">Ghar.</h3>
                     <p class="desc mt-2">She is my home and always will be.</p>
                 </div>
             </div>
-
             <div class="l right">
-                <div class="c">
-                    <img src="images/friend.jpeg">
-                </div>
+                <div class="c"><img src="images/friend.jpeg" alt="friend"></div>
                 <div class="n">
                     <h3 class="h4 year">Bestfriends.</h3>
                     <p class="desc mt-2">We made it through the shipping, through all the chaos, misunderstandings,
@@ -179,9 +149,7 @@
                         you're my best friend.</p>
                 </div>
             </div>
-
         </div>
-
         <div class="max-w-4xl mx-auto text-center mt-12">
             <p class="foot centered-text">...and many more legendary chapters to be written!</p>
         </div>
@@ -189,26 +157,24 @@
 
     <section id="s-3" class="s-pad">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="h3 mb-6 centered-text" style="color:var(--accent);">⚠️ The August 20th Incident ⚠️</h2>
-            <p class="h4 mb-10 max-w-3xl mx-auto incident-p centered-text">
-                <strong class="font-bold">Riddhi,</strong> I know I messed up the date. I fixed the mistake, and here is
-                why you still deserve a whole website, even if it's late
-            </p>
-
+            <h2 class="h3 mb-6 centered-text" style="color:var(--accent)">⚠️ The August 20th Incident ⚠️</h2>
+            <p class="h4 mb-10 max-w-3xl mx-auto incident-p centered-text"><strong class="font-bold">Riddhi,</strong> I
+                know I messed up the date. I fixed the mistake, and here is why you still deserve a whole website, even
+                if it's late</p>
             <div class="reason-grid">
                 <div class="r">
-                    <p class="r-icon" style="color:var(--accent);">⭐</p>
+                    <p class="r-icon" style="color:var(--accent)">⭐</p>
                     <h3 class="h4 bold mb-2">Primary Reason: She's Riddhi!</h3>
                     <p class="r-p">A best friend's website isn't a special gift, it's something I have to make to show
                         how awesome you are. This one was just a little late</p>
                 </div>
                 <div class="r">
-                    <p class="r-icon" style="color:var(--accent);">😂</p>
+                    <p class="r-icon" style="color:var(--accent)">😂</p>
                     <h3 class="h4 bold mb-2">The Official Complaint (Jokingly)</h3>
                     <p class="r-p">You motivated me. When you joke about something, I take it seriously</p>
                 </div>
                 <div class="r">
-                    <p class="r-icon" style="color:var(--accent);">💯</p>
+                    <p class="r-icon" style="color:var(--accent)">💯</p>
                     <h3 class="h4 bold mb-2">The Friendship Tax</h3>
                     <p class="r-p">You were always there with me whenever I wanted something chatpata.</p>
                 </div>
@@ -219,8 +185,7 @@
     <section id="s-4" class="s-pad countdown-s">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="h3 light mb-8 centered-text">Countdown to the Exact Moment:</h2>
-            <p class="h1 mb-10 centered-text" style="color:var(--accent);">The Next August 20th at 4:18 PM!</p>
-
+            <p class="h1 mb-10 centered-text" style="color:var(--accent)">The Next August 20th at 4:18 PM!</p>
             <div class="w">
                 <div class="time-block">
                     <span id="days" class="time-num">00</span>
