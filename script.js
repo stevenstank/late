@@ -48,47 +48,20 @@ if ('IntersectionObserver' in window) {
 function showMilestoneMessage(msg) {
     const notificationId = 'leaf-milestone-notification';
     let notification = document.getElementById(notificationId);
-
     if (!notification) {
         notification = document.createElement('div');
         notification.id = notificationId;
-        notification.style.cssText = `
-            position: fixed;
-            top: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 9999;
-            padding: 12px 18px; /* Slightly reduced horizontal padding */
-            background-color: var(--accent);
-            color: var(--panel);
-            border-radius: 8px;
-            font-weight: 600;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            transition: all 0.5s ease-in-out;
-            opacity: 0;
-            pointer-events: none;
-            max-width: 90%; /* Crucial: ensures it takes up no more than 90% of the viewport width */
-            white-space: normal; /* Allows the message to wrap onto multiple lines */
-            line-height: 1.4; /* Improves readability of wrapped text */
-            box-sizing: border-box; /* Ensures padding and border are included within the 90% width */
-        `;
+        notification.className = 'milestone-notification';
         document.body.appendChild(notification);
     }
-
     notification.textContent = msg;
-
     setTimeout(() => {
-        notification.style.opacity = '1';
-        notification.style.transform = 'translate(-50%, 0)';
+        notification.classList.add('is-visible');
     }, 10);
-
     setTimeout(() => {
-        notification.style.opacity = '0';
-        notification.style.transform = 'translate(-50%, -20px)';
+        notification.classList.remove('is-visible');
     }, 4000);
 }
-
 (function () {
     const KEY = 'leaf-count';
     const inc = document.getElementById('leafInc');

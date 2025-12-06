@@ -579,3 +579,38 @@ body {
         padding: .9rem 0.8rem
     }
 }
+
+.milestone-notification {
+    position: fixed;
+    top: 25px;
+    left: 50%;
+    transform: translate(-50%, -20px);
+    z-index: 9999;
+    padding: 12px 24px;
+    background-color: var(--accent);
+    color: var(--panel);
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.5s ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+    line-height: 1.4;
+    white-space: normal;
+    box-sizing: border-box;
+    max-width: 600px;
+}
+
+.milestone-notification.is-visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+@media (max-width: 640px) {
+    .milestone-notification {
+        max-width: 90%;
+        padding: 12px 16px;
+        font-size: 0.95rem;
+    }
+}
