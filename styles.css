@@ -138,6 +138,13 @@ button {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    display: inline-block;
+}
+
+.h3.title {
+    color: var(--text);
+    background: none;
+    -webkit-text-fill-color: var(--text);
 }
 
 .h4 {
