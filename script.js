@@ -17,7 +17,7 @@ function getNextBirthday(m, d, h, min) {
 }
 
 const countdownDate = getNextBirthday(8, 20, 16, 18);
-const countdownSection = document.getElementById("s-4");
+const countdownSection = document.getElementById("s-5");
 
 setInterval(() => {
     const now = new Date().getTime();

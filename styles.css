@@ -24,7 +24,7 @@ html,
 body {
     height: 100%;
     margin: 0;
-    padding: 0;
+    padding: 0
 }
 
 body {
@@ -110,7 +110,7 @@ body {
     position: absolute;
     inset: 0;
     background: var(--hero-overlay);
-    z-index: 1;
+    z-index: 1
 }
 
 .hero-inner {
@@ -397,7 +397,7 @@ body {
     background-color: #1f2937;
     text-align: center;
     color: #9ca3af;
-    padding: 1.75rem 0;
+    padding: 1.75rem 0
 }
 
 @media (max-width:768px) {
