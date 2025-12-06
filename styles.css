@@ -24,7 +24,7 @@ html,
 body {
     height: 100%;
     margin: 0;
-    padding: 0
+    padding: 0;
 }
 
 body {
@@ -144,7 +144,7 @@ body {
     border-radius: 9999px;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
     transition: background-color 300ms;
-    text-decoration: none
+    text-decoration: none;
 }
 
 .cta:hover {
@@ -175,7 +175,7 @@ body {
     box-sizing: border-box;
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .l.visible {
@@ -202,7 +202,7 @@ body {
     box-shadow: var(--card-shadow);
     transform: rotate(0deg);
     border-radius: 12px;
-    overflow: hidden
+    overflow: hidden;
 }
 
 .c img {
@@ -217,7 +217,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     margin-top: 15px;
-    color: var(--text)
+    color: var(--text);
 }
 
 .sub,
@@ -265,7 +265,7 @@ body {
     box-shadow: var(--card-shadow);
     transition: transform 300ms ease;
     height: 100%;
-    text-align: center
+    text-align: center;
 }
 
 .r:hover {
@@ -314,7 +314,7 @@ body {
     border-radius: 1rem;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     width: 8rem;
-    text-align: center
+    text-align: center;
 }
 
 @media (min-width:640px) {
@@ -358,13 +358,13 @@ body {
     backdrop-filter: blur(6px) saturate(120%);
     border: 1px solid rgba(255, 255, 255, 0.6);
     cursor: pointer;
-    border: none
+    border: none;
 }
 
 [data-theme="dark"] .t {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
     border: 1px solid rgba(255, 255, 255, 0.06);
-    box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6)
+    box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6);
 }
 
 .t:active {
@@ -378,7 +378,7 @@ body {
     place-items: center;
     border-radius: 999px;
     background: linear-gradient(180deg, var(--panel), rgba(255, 255, 255, 0.02));
-    box-shadow: 0 6px 18px rgba(16, 24, 40, 0.08)
+    box-shadow: 0 6px 18px rgba(16, 24, 40, 0.08);
 }
 
 .label {
@@ -397,7 +397,7 @@ body {
     background-color: #1f2937;
     text-align: center;
     color: #9ca3af;
-    padding: 1.75rem 0
+    padding: 1.75rem 0;
 }
 
 @media (max-width:768px) {
@@ -451,13 +451,13 @@ body {
     border: 1px solid rgba(0, 0, 0, 0.06);
     font-family: 'Inter', sans-serif;
     user-select: none;
-    -webkit-user-select: none
+    -webkit-user-select: none;
 }
 
 [data-theme="dark"] .leaf-counter {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
     border: 1px solid rgba(255, 255, 255, 0.06);
-    box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6)
+    box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6);
 }
 
 .leaf-btn {
@@ -472,7 +472,7 @@ body {
     display: grid;
     place-items: center;
     transition: transform 120ms ease, background 120ms ease, color 120ms ease;
-    color: var(--text)
+    color: var(--text);
 }
 
 .leaf-btn:active {
@@ -495,7 +495,7 @@ body {
     font-weight: 700;
     color: var(--text);
     min-width: 72px;
-    justify-content: center
+    justify-content: center;
 }
 
 [data-theme="dark"] .leaf-display {
@@ -540,5 +540,42 @@ body {
     #leafLogo {
         width: 22px;
         height: 22px
+    }
+}
+
+.friends-since {
+    max-width: 55rem;
+    margin: 0 auto 2rem;
+    text-align: center;
+    color: var(--text)
+}
+
+.fs-w {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem
+}
+
+.fs-block {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #1f2937;
+    padding: 1rem 1.25rem;
+    border-radius: 1rem;
+    width: 8.5rem;
+    box-shadow: var(--card-shadow);
+    text-align: center
+}
+
+[data-theme="dark"] .fs-block {
+    background-color: rgba(255, 255, 255, 0.03);
+    color: var(--text)
+}
+
+@media (max-width:640px) {
+    .fs-block {
+        width: 6.5rem;
+        padding: .9rem 0.8rem
     }
 }
