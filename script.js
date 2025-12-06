@@ -7,7 +7,6 @@ function applyTheme(theme) { if (theme === 'dark') { root.setAttribute('data-the
 const saved = localStorage.getItem('site-theme');
 if (saved) { applyTheme(saved) } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) { applyTheme('dark') } else { applyTheme('light') }
 if (toggle) toggle.addEventListener('click', () => { const current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'; const next = current === 'dark' ? 'light' : 'dark'; applyTheme(next); localStorage.setItem('site-theme', next) });
-
 function getNextBirthday(m, d, h, min) {
     const now = new Date();
     let y = now.getFullYear();
@@ -15,10 +14,8 @@ function getNextBirthday(m, d, h, min) {
     if (t.getTime() < now.getTime()) t = new Date(y + 1, m - 1, d, h, min, 0);
     return t.getTime();
 }
-
 const countdownDate = getNextBirthday(8, 20, 16, 18);
 const countdownSection = document.getElementById("s-5");
-
 setInterval(() => {
     const now = new Date().getTime();
     const dist = countdownDate - now;
@@ -36,7 +33,6 @@ setInterval(() => {
         countdownSection.innerHTML = '<div class="max-w-4xl mx-auto text-center"><h2 class="text-4xl font-extrabold" style="color: var(--accent);">🎉 Happy Birthday, Riddhi! 🎉</h2><p class="text-xl mt-4">The next celebration is officially here!</p></div>';
     }
 }, 1000);
-
 const items = document.querySelectorAll('.l');
 if ('IntersectionObserver' in window) {
     const obs = new IntersectionObserver(e => {
@@ -49,7 +45,43 @@ if ('IntersectionObserver' in window) {
     }, { threshold: 0.1 });
     items.forEach(i => obs.observe(i));
 } else items.forEach(i => i.classList.add('visible'));
-
+function showMilestoneMessage(msg) {
+    const notificationId = 'leaf-milestone-notification';
+    let notification = document.getElementById(notificationId);
+    if (!notification) {
+        notification = document.createElement('div');
+        notification.id = notificationId;
+        notification.style.cssText = `
+            position: fixed;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            padding: 12px 24px;
+            background-color: var(--accent);
+            color: var(--panel);
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s ease-in-out;
+            opacity: 0;
+            pointer-events: none;
+            max-width: 90%;
+            white-space: nowrap;
+        `;
+        document.body.appendChild(notification);
+    }
+    notification.textContent = msg;
+    setTimeout(() => {
+        notification.style.opacity = '1';
+        notification.style.transform = 'translate(-50%, 0)';
+    }, 10);
+    setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.style.transform = 'translate(-50%, -20px)';
+    }, 4000);
+}
 (function () {
     const KEY = 'leaf-count';
     const inc = document.getElementById('leafInc');
@@ -61,13 +93,43 @@ if ('IntersectionObserver' in window) {
     const getVal = () => { const v = parseInt(localStorage.getItem(KEY), 10); return Number.isFinite(v) ? v : 0 };
     let count = getVal();
     let hold = null;
-    function render() { el.textContent = String(count); el.parentElement.setAttribute('title', count + ' leaves'); if (logo) logo.style.opacity = count > 0 ? '1' : '0.6'; }
+    function render() {
+        el.textContent = String(count);
+        el.parentElement.setAttribute('title', count + ' leaves');
+        if (logo) logo.style.opacity = count > 0 ? '1' : '0.6';
+    }
     function save() { localStorage.setItem(KEY, String(count)) }
-    function incFn() { count++; save(); flash(); render() }
-    function decFn() { count = Math.max(0, count - 1); save(); flash(); render() }
-    function flash() { if (!logo) return; logo.style.transform = 'scale(1.12) rotate(-6deg)'; setTimeout(() => logo.style.transform = '', 180) }
-    function startHold(fn) { fn(); hold = setTimeout(() => { hold = setInterval(fn, 120) }, 360) }
-    function stopHold() { clearTimeout(hold); clearInterval(hold); hold = null; }
+    function incFn() {
+        count++;
+        save();
+        flash();
+        render();
+        if (count > 0 && count % 25 === 0) {
+            const milestone = count;
+            const message = `🎉 Milestone ${milestone}! Here is a flower for you 🌸. Remember, you're my home, always. I won't let anything happen to you. 💚`;
+            showMilestoneMessage(message);
+        }
+    }
+    function decFn() {
+        count = Math.max(0, count - 1);
+        save();
+        flash();
+        render()
+    }
+    function flash() {
+        if (!logo) return;
+        logo.style.transform = 'scale(1.12) rotate(-6deg)';
+        setTimeout(() => logo.style.transform = '', 180)
+    }
+    function startHold(fn) {
+        fn();
+        hold = setTimeout(() => { hold = setInterval(fn, 120) }, 360)
+    }
+    function stopHold() {
+        clearTimeout(hold);
+        clearInterval(hold);
+        hold = null;
+    }
     render();
     inc.addEventListener('pointerdown', e => { e.preventDefault(); startHold(incFn) });
     inc.addEventListener('pointerup', stopHold);
@@ -88,18 +150,21 @@ if ('IntersectionObserver' in window) {
         }
     });
 })();
-
 function getFriendsStartDate() {
     const wrapper = document.getElementById('friendsSince');
     const now = new Date();
+    const friendMonth = 7;
+    const friendDay = 9;
     const attr = wrapper && wrapper.dataset && wrapper.dataset.startYear ? parseInt(wrapper.dataset.startYear, 10) : null;
     if (attr && Number.isFinite(attr)) {
-        return new Date(attr, 7, 9, 0, 0, 0);
+        return new Date(attr, friendMonth, friendDay, 0, 0, 0);
     }
     let y = now.getFullYear();
-    const candidate = new Date(y, 7, 9, 0, 0, 0);
-    if (candidate > now) y = y - 1;
-    return new Date(y, 7, 9, 0, 0, 0);
+    const candidate = new Date(y, friendMonth, friendDay, 0, 0, 0);
+    if (candidate > now) {
+        y = y - 1;
+    }
+    return new Date(y, friendMonth, friendDay, 0, 0, 0);
 }
 function pad2(n) { return Math.abs(n).toString().padStart(2, '0') }
 const fsYearsEl = document.getElementById('fs-years');
