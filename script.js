@@ -48,6 +48,7 @@ if ('IntersectionObserver' in window) {
 function showMilestoneMessage(msg) {
     const notificationId = 'leaf-milestone-notification';
     let notification = document.getElementById(notificationId);
+
     if (!notification) {
         notification = document.createElement('div');
         notification.id = notificationId;
@@ -62,26 +63,31 @@ function showMilestoneMessage(msg) {
             color: var(--panel);
             border-radius: 8px;
             font-weight: 600;
-            text-align: center;
+            text-align: center; 
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             transition: all 0.5s ease-in-out;
             opacity: 0;
             pointer-events: none;
-            max-width: 90%;
-            white-space: nowrap;
+            max-width: 80%; /* Limits the width to 80% of the viewport */
+            white-space: normal; /* Allows the long text to wrap onto new lines */
+            line-height: 1.4; /* Improves readability of wrapped text */
         `;
         document.body.appendChild(notification);
     }
+
     notification.textContent = msg;
+
     setTimeout(() => {
         notification.style.opacity = '1';
         notification.style.transform = 'translate(-50%, 0)';
     }, 10);
+
     setTimeout(() => {
         notification.style.opacity = '0';
         notification.style.transform = 'translate(-50%, -20px)';
     }, 4000);
 }
+
 (function () {
     const KEY = 'leaf-count';
     const inc = document.getElementById('leafInc');
