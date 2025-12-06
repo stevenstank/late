@@ -58,19 +58,20 @@ function showMilestoneMessage(msg) {
             left: 50%;
             transform: translateX(-50%);
             z-index: 9999;
-            padding: 12px 24px;
+            padding: 12px 18px; /* Slightly reduced horizontal padding */
             background-color: var(--accent);
             color: var(--panel);
             border-radius: 8px;
             font-weight: 600;
-            text-align: center; 
+            text-align: center;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             transition: all 0.5s ease-in-out;
             opacity: 0;
             pointer-events: none;
-            max-width: 80%; /* Limits the width to 80% of the viewport */
-            white-space: normal; /* Allows the long text to wrap onto new lines */
+            max-width: 90%; /* Crucial: ensures it takes up no more than 90% of the viewport width */
+            white-space: normal; /* Allows the message to wrap onto multiple lines */
             line-height: 1.4; /* Improves readability of wrapped text */
+            box-sizing: border-box; /* Ensures padding and border are included within the 90% width */
         `;
         document.body.appendChild(notification);
     }
