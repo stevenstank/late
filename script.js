@@ -278,7 +278,7 @@ function showMilestoneMessage(msg) {
 
         if (count > 0 && count % 25 === 0 && badges[count]) {
             const milestone = count;
-            const message = `🎉 Milestone ${milestone}! ${badges[count].message}`;
+            const message = `🎉 Milestone ${milestone}! Here is a flower for you 🌸. Remember, you're my home, always. I won't let anything happen to you. 💚`;
             showMilestoneMessage(message);
         }
     }
